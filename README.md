@@ -25,7 +25,7 @@ jumper, better history handling, and handy aliases — to plain Bash.
 Install with a single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/4msar/zsh-like-bash/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/4msar/zsh-like-bash/main/install | bash
 ```
 
 This clones the repo to `~/.bash` and appends a snippet to your `~/.bashrc`

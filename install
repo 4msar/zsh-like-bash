@@ -40,4 +40,6 @@ else
     echo "Added init snippet to $BASHRC"
 fi
 
+exec bash --rcfile "$BASHRC"
+
 echo "Done. Run 'source ~/.bashrc' or open a new shell to start using it."
