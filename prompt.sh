@@ -57,10 +57,10 @@ __prompt_git() {
     behind=0
 
     if [[ -n "$upstream" ]]; then
-        read -r behind ahead < <(
+        read -r behind ahead <<< "$(
             git rev-list --left-right --count \
                 "$upstream...HEAD" 2>/dev/null
-        )
+        )"
     fi
 
     sync=""

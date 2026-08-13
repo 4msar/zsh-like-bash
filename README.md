@@ -19,6 +19,9 @@ jumper, better history handling, and handy aliases — to plain Bash.
   conveniences (`autocd`, `cdspell`).
 - **`aliases.sh`** — Common shortcuts for navigation (`..`, `...`), `ls`
   variants (`ll`, `la`, `l`), and Git (`gs`, `ga`, `gc`, `gp`, `gl`, etc.).
+- **`functions.sh`** — Handy functions for common tasks, like `mkcd` (make
+  directory and `cd` into it), `extract` (extract various archive types), and
+  `git-branch-name` (print the current Git branch name).
 
 ## Installation
 
