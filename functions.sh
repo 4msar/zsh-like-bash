@@ -44,6 +44,12 @@ function zlb-help() {
     if [[ "$1" == "--aliases" ]]; then
         echo "Available aliases:"
         echo "  z - Jump to a frequently used directory"
+        # check sed command is available
+        if ! command -v sed &> /dev/null; then
+            # get the file contents and print the aliases
+            grep -E '^[[:space:]]*alias[[:space:]]*' "$ZSH_LIKE_BASH_DIR/aliases.sh"
+            return
+        fi
         sed -n 's/^[[:space:]]*alias[[:space:]]*//p' "$ZSH_LIKE_BASH_DIR/aliases.sh"
         return
     fi
