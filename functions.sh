@@ -23,13 +23,15 @@ function zlb-update() {
     local script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
     echo "Updating zsh-like-bash from $script_path"
+    echo ""
 
     # goto the script path
     cd "$script_path" || return
 
     # git pull the latest changes
-    git pull origin main
+    git pull origin main --quiet
 
+    echo ""
     echo "zsh-like-bash updated successfully!"
 
     cd "$current_dir" || return
