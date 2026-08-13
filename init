@@ -1,0 +1,15 @@
+# ~/.bashrc
+
+# Only configure interactive shells
+case $- in
+    *i*) ;;
+    *) return ;;
+esac
+
+# User binaries
+export PATH="$HOME/.local/bin:$PATH"
+
+# Load custom Bash configuration
+for config in "$HOME/.bash/"*.sh; do
+    [[ -r "$config" ]] && source "$config"
+done

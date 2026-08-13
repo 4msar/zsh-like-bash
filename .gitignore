@@ -1,0 +1,10 @@
+# z directory database (placeholder dir is tracked, contents are not)
+.bash/z-data/*
+!.bash/z-data/.gitkeep
+
+# OS
+.DS_Store
+
+# Editors
+*.swp
+*~
