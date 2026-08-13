@@ -34,7 +34,7 @@ else
     {
         echo ""
         echo "$MARKER_START"
-        cat "$INSTALL_DIR/init"
+        echo "source $INSTALL_DIR/init"
         echo "$MARKER_END"
     } >> "$BASHRC"
     echo "Added init snippet to $BASHRC"
