@@ -1,10 +1,5 @@
-# ~/.bashrc
-
-# Only configure interactive shells
-case $- in
-    *i*) ;;
-    *) return ;;
-esac
+#!/bin/bash
+# Include this file to ~/.bashrc
 
 # User binaries
 export PATH="$HOME/.local/bin:$PATH"

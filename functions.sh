@@ -17,8 +17,9 @@ function remove_ds_store() {
 }
 
 function zlb-update() {
-    # get this file directory path
+    local current_dir=$(pwd)
 
+    # get this file directory path
     local script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
     echo "Updating zsh-like-bash from $script_path"
@@ -30,4 +31,6 @@ function zlb-update() {
     git pull origin main
 
     echo "zsh-like-bash updated successfully!"
+
+    cd "$current_dir" || return
 }
