@@ -8,3 +8,5 @@ export PATH="$HOME/.local/bin:$PATH"
 for config in "$HOME/.bash/"*.sh; do
     [[ -r "$config" ]] && source "$config"
 done
+
+export ZSH_LIKE_BASH_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)

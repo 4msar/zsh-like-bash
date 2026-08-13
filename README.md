@@ -1,4 +1,4 @@
-# zsh-like-bash
+# zsh-like-bash (zlb)
 
 A small collection of Bash scripts that bring some of the quality-of-life features
 people love about Zsh — an informative multi-line prompt, a `z`-style directory

@@ -36,3 +36,31 @@ function zlb-update() {
 
     cd "$current_dir" || return
 }
+
+function zlb-help() {
+
+    # check for --aliases argument
+
+    if [[ "$1" == "--aliases" ]]; then
+        echo "Available aliases:"
+        echo "  z - Jump to a frequently used directory"
+        sed -n 's/^[[:space:]]*alias[[:space:]]*//p' "$ZSH_LIKE_BASH_DIR/aliases.sh"
+        return
+    fi
+
+    echo "zsh-like-bash - A collection of useful bash functions and styles"
+    echo ""
+    echo ""
+    echo "Available functions:"
+    echo "  generate_password - Generate a random password"
+    echo "  clear_git_branches - Cleanup git branches that are gone"
+    echo "  remove_ds_store - Remove .DS_Store files from the current directory"
+    echo "  zlb-update - Update zsh-like-bash to the latest version"
+    echo "  zlb-help - Show this help message"
+
+    echo ""
+    echo ""
+    echo "Aliases:"
+    echo "  z - Jump to a frequently used directory"
+    echo "  zlb-help --aliases - Show available aliases"
+}
