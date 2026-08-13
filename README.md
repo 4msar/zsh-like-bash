@@ -22,29 +22,37 @@ jumper, better history handling, and handy aliases — to plain Bash.
 
 ## Installation
 
-Clone the repo and source the scripts you want from your `~/.bashrc`:
+Install with a single command:
 
 ```bash
-git clone <this-repo-url> ~/.zsh-like-bash
-
-for f in history completion aliases prompt z; do
-    source "$HOME/.zsh-like-bash/$f.sh"
-done
+curl -fsSL https://raw.githubusercontent.com/4msar/zsh-like-bash/main/install.sh | bash
 ```
 
-Reload your shell:
+This clones the repo to `~/.bash` and appends a snippet to your `~/.bashrc`
+(between `# >>> zsh-like-bash >>>` / `# <<< zsh-like-bash <<<` markers) that
+sources every `*.sh` file in `~/.bash/`. Re-running the installer later just
+pulls the latest changes; it won't duplicate the `.bashrc` snippet.
+
+Reload your shell to apply:
 
 ```bash
 source ~/.bashrc
 ```
 
-You can pick and choose which files to source — each one is independent.
+### Manual installation
 
-## Usage
+Alternatively, clone the repo yourself and source the scripts you want:
 
-### Prompt
+```bash
+git clone https://github.com/4msar/zsh-like-bash.git ~/.bash
 
-Sourcing `prompt.sh` immediately replaces `PS1` and hooks into `PROMPT_COMMAND`.
+echo '# >>> zsh-like-bash >>>' >> ~/.bashrc
+echo "source ~/.bash/init" >> ~/.bashrc
+echo '# <<< zsh-like-bash <<<' >> ~/.bashrc
+```
+
+You can pick and choose which files to echo '# <<< zsh-like-bash <<<' >> ~/.bashrc
+# can pick and choose which files to source — each one is independent.oks into `PROMPT_COMMAND`.
 No further configuration is needed.
 
 ### `z` — directory jumper
@@ -61,8 +69,7 @@ z /abs/path  # behaves like `cd /abs/path`
 ```
 
 > Note: `z.sh` needs `prompt.sh` sourced as well, since directory tracking
-> happens in `__prompt_update`. The `z-data/` folder in this repo is just a
-> placeholder for the data directory structure and isn't used at runtime.
+> happens in `__prompt_update`.
 
 ### Aliases
 
