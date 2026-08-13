@@ -34,7 +34,7 @@ else
     {
         echo ""
         echo "$MARKER_START"
-        echo "source $INSTALL_DIR/init"
+        echo 'source "$HOME/.bash/init"'
         echo "$MARKER_END"
     } >> "$BASHRC"
     echo "Added init snippet to $BASHRC"
