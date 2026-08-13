@@ -3,7 +3,7 @@
 # zsh-like-bash installer
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/4msar/zsh-like-bash/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/4msar/zsh-like-bash/main/install | bash
 #
 set -euo pipefail
 

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>zsh-like-bash (zlb)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'media',
+    theme: {
+      extend: {
+        fontFamily: {
+          mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
+        },
+      },
+    },
+  }
+</script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+</style>
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased">
+
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur">
+    <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 font-mono font-semibold text-slate-100">
+        <span class="text-emerald-400">❯</span> zsh-like-bash
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-400">
+        <a href="#features" class="hover:text-emerald-400 transition">Features</a>
+        <a href="#install" class="hover:text-emerald-400 transition">Install</a>
+        <a href="#cli" class="hover:text-emerald-400 transition">CLI Reference</a>
+        <a href="#requirements" class="hover:text-emerald-400 transition">Requirements</a>
+      </div>
+      <a href="https://github.com/4msar/zsh-like-bash" class="text-sm rounded-md border border-slate-700 px-3 py-1.5 hover:border-emerald-400 hover:text-emerald-400 transition">GitHub</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+    <p class="inline-block font-mono text-xs uppercase tracking-widest text-emerald-400 border border-emerald-400/30 rounded-full px-3 py-1 mb-6">
+      Plain Bash, Zsh-flavored
+    </p>
+    <h1 class="text-4xl sm:text-5xl font-bold text-slate-50 tracking-tight">
+      zsh-like-bash <span class="text-emerald-400">(zlb)</span>
+    </h1>
+    <p class="mt-5 text-lg text-slate-400 max-w-2xl mx-auto">
+      A small collection of Bash scripts that bring the quality-of-life features people love
+      about Zsh — an informative prompt, a <code class="font-mono text-emerald-400">z</code>-style
+      directory jumper, better history, and handy aliases — to plain Bash.
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="#install" class="w-full sm:w-auto rounded-md bg-emerald-500 text-slate-950 font-medium px-5 py-2.5 hover:bg-emerald-400 transition">
+        Get started
+      </a>
+      <a href="#cli" class="w-full sm:w-auto rounded-md border border-slate-700 px-5 py-2.5 text-slate-200 hover:border-emerald-400 hover:text-emerald-400 transition">
+        Browse CLI reference
+      </a>
+    </div>
+
+    <div class="mt-10 max-w-2xl mx-auto text-left rounded-lg border border-slate-800 bg-slate-900/60 overflow-hidden">
+      <div class="flex items-center gap-1.5 px-4 py-2.5 border-b border-slate-800 bg-slate-900">
+        <span class="h-2.5 w-2.5 rounded-full bg-red-500/70"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-yellow-500/70"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-green-500/70"></span>
+        <span class="ml-2 text-xs text-slate-500 font-mono">bash</span>
+      </div>
+      <pre class="p-4 font-mono text-sm text-slate-300 overflow-x-auto"><code>curl -fsSL https://raw.githubusercontent.com/4msar/zsh-like-bash/main/install | bash</code></pre>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-800/80">
+    <h2 class="text-2xl font-semibold text-slate-50 mb-2">What's inside</h2>
+    <p class="text-slate-400 mb-10">Six independent scripts. Source only what you want.</p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <div class="rounded-lg border border-slate-800 bg-slate-900/40 p-5 hover:border-emerald-400/40 transition">
+        <p class="font-mono text-sm text-emerald-400 mb-2">prompt.sh</p>
+        <p class="text-sm text-slate-400">Two-line, color-coded prompt: shortened cwd, Git branch with dirty/clean status and ahead/behind counts, last command duration and exit status.</p>
+      </div>
+
+      <div class="rounded-lg border border-slate-800 bg-slate-900/40 p-5 hover:border-emerald-400/40 transition">
+        <p class="font-mono text-sm text-emerald-400 mb-2">z.sh</p>
+        <p class="text-sm text-slate-400">A lightweight <code class="font-mono">z</code> command that jumps to frequently/recently used directories by partial name. No external dependencies.</p>
+      </div>
+
+      <div class="rounded-lg border border-slate-800 bg-slate-900/40 p-5 hover:border-emerald-400/40 transition">
+        <p class="font-mono text-sm text-emerald-400 mb-2">history.sh</p>
+        <p class="text-sm text-slate-400">Saner Bash history defaults: dedup, larger history size, append instead of overwrite, multi-line command support.</p>
+      </div>
+
+      <div class="rounded-lg border border-slate-800 bg-slate-900/40 p-5 hover:border-emerald-400/40 transition">
+        <p class="font-mono text-sm text-emerald-400 mb-2">completion.sh</p>
+        <p class="text-sm text-slate-400">Loads system Bash completion and enables Zsh-like conveniences: <code class="font-mono">autocd</code> and <code class="font-mono">cdspell</code>.</p>
+      </div>
+
+      <div class="rounded-lg border border-slate-800 bg-slate-900/40 p-5 hover:border-emerald-400/40 transition">
+        <p class="font-mono text-sm text-emerald-400 mb-2">aliases.sh</p>
+        <p class="text-sm text-slate-400">Common shortcuts for navigation (<code class="font-mono">..</code>, <code class="font-mono">...</code>), <code class="font-mono">ls</code> variants, and Git (<code class="font-mono">gs</code>, <code class="font-mono">ga</code>, <code class="font-mono">gc</code>, <code class="font-mono">gp</code>...).</p>
+      </div>
+
+      <div class="rounded-lg border border-slate-800 bg-slate-900/40 p-5 hover:border-emerald-400/40 transition">
+        <p class="font-mono text-sm text-emerald-400 mb-2">functions.sh</p>
+        <p class="text-sm text-slate-400">Handy functions: <code class="font-mono">mkcd</code>, <code class="font-mono">extract</code>, <code class="font-mono">git-branch-name</code>, and the <code class="font-mono">zlb-*</code> management commands.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section id="install" class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-800/80">
+    <h2 class="text-2xl font-semibold text-slate-50 mb-2">Installation</h2>
+    <p class="text-slate-400 mb-8">One command, or clone it yourself and pick what you want.</p>
+
+    <div class="space-y-8">
+      <div>
+        <h3 class="text-slate-100 font-medium mb-3">Quick install</h3>
+        <div class="rounded-lg border border-slate-800 bg-slate-900/60 overflow-hidden">
+          <pre class="p-4 font-mono text-sm text-slate-300 overflow-x-auto"><code>curl -fsSL https://raw.githubusercontent.com/4msar/zsh-like-bash/main/install | bash</code></pre>
+        </div>
+        <p class="text-sm text-slate-500 mt-3">
+          Clones the repo to <code class="font-mono text-slate-400">~/.bash</code> and appends a snippet to
+          <code class="font-mono text-slate-400">~/.bashrc</code> (between
+          <code class="font-mono text-slate-400"># &gt;&gt;&gt; zsh-like-bash &gt;&gt;&gt;</code> /
+          <code class="font-mono text-slate-400"># &lt;&lt;&lt; zsh-like-bash &lt;&lt;&lt;</code> markers) that sources
+          every <code class="font-mono text-slate-400">*.sh</code> file in <code class="font-mono text-slate-400">~/.bash/</code>.
+          Re-running the installer later just pulls the latest changes.
+        </p>
+        <div class="rounded-lg border border-slate-800 bg-slate-900/60 overflow-hidden mt-3">
+          <pre class="p-4 font-mono text-sm text-slate-300 overflow-x-auto"><code>source ~/.bashrc</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-slate-100 font-medium mb-3">Manual installation</h3>
+        <div class="rounded-lg border border-slate-800 bg-slate-900/60 overflow-hidden">
+          <pre class="p-4 font-mono text-sm text-slate-300 overflow-x-auto"><code>git clone https://github.com/4msar/zsh-like-bash.git ~/.bash
+
+echo '# &gt;&gt;&gt; zsh-like-bash &gt;&gt;&gt;' &gt;&gt; ~/.bashrc
+echo "source ~/.bash/init" &gt;&gt; ~/.bashrc
+echo '# &lt;&lt;&lt; zsh-like-bash &lt;&lt;&lt;' &gt;&gt; ~/.bashrc</code></pre>
+        </div>
+        <p class="text-sm text-slate-500 mt-3">
+          Pick and choose which files to source — each script is independent.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLI Reference -->
+  <section id="cli" class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-800/80">
+    <h2 class="text-2xl font-semibold text-slate-50 mb-2">CLI reference</h2>
+    <p class="text-slate-400 mb-10">Every command, function, and alias zlb adds to your shell.</p>
+
+    <!-- z -->
+    <div class="mb-12">
+      <h3 class="text-lg font-medium text-slate-100 mb-1 font-mono">z <span class="text-slate-500 text-sm font-normal">— directory jumper</span></h3>
+      <p class="text-sm text-slate-400 mb-4">
+        Records every directory you visit (via a hook in <code class="font-mono">prompt.sh</code>'s
+        <code class="font-mono">PROMPT_COMMAND</code>) into <code class="font-mono">~/.bash/z-data/directories</code>.
+        Requires <code class="font-mono">prompt.sh</code> to be sourced too.
+      </p>
+      <div class="rounded-lg border border-slate-800 bg-slate-900/60 overflow-hidden">
+        <table class="w-full text-sm">
+          <tbody class="divide-y divide-slate-800">
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap">z foo</td>
+              <td class="px-4 py-2.5 text-slate-400">Jump to the best-matching visited directory containing "foo"</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap">z foo bar</td>
+              <td class="px-4 py-2.5 text-slate-400">Match a directory containing both "foo" and "bar"</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap">z</td>
+              <td class="px-4 py-2.5 text-slate-400">Go home</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap">z -</td>
+              <td class="px-4 py-2.5 text-slate-400">Go to the previous directory (like <code class="font-mono">cd -</code>)</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap">z /abs/path</td>
+              <td class="px-4 py-2.5 text-slate-400">Behaves like <code class="font-mono">cd /abs/path</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Functions -->
+    <div class="mb-12">
+      <h3 class="text-lg font-medium text-slate-100 mb-4">Functions <span class="text-slate-500 text-sm font-normal">— functions.sh</span></h3>
+      <div class="rounded-lg border border-slate-800 bg-slate-900/60 overflow-hidden">
+        <table class="w-full text-sm">
+          <tbody class="divide-y divide-slate-800">
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap align-top">generate_password</td>
+              <td class="px-4 py-2.5 text-slate-400">Generate a random password (<code class="font-mono">openssl rand -hex 16</code>)</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap align-top">clear_git_branches</td>
+              <td class="px-4 py-2.5 text-slate-400">Fetch and prune, then force-delete local branches whose upstream is gone</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap align-top">remove_ds_store</td>
+              <td class="px-4 py-2.5 text-slate-400">Recursively delete <code class="font-mono">.DS_Store</code> files from the current directory</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap align-top">zlb-update</td>
+              <td class="px-4 py-2.5 text-slate-400"><code class="font-mono">git pull</code>s the latest zsh-like-bash changes into its install directory</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2.5 font-mono text-emerald-400 whitespace-nowrap align-top">zlb-help</td>
+              <td class="px-4 py-2.5 text-slate-400">Print available functions and aliases. Use <code class="font-mono">zlb-help --aliases</code> to list just the Git/nav aliases</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Aliases -->
+    <div>
+      <h3 class="text-lg font-medium text-slate-100 mb-4">Aliases <span class="text-slate-500 text-sm font-normal">— aliases.sh</span></h3>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="rounded-lg border border-slate-800 bg-slate-900/60 overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-slate-800 text-xs uppercase tracking-wider text-slate-500">Navigation &amp; listing</div>
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-slate-800">
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">..</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">cd ..</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">...</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">cd ../..</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">....</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">cd ../../..</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">ll</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">ls -lah --color=auto</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">la</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">ls -A --color=auto</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">l</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">ls -CF --color=auto</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">cls</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">clear</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">grep</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">grep --color=auto</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">myip</td><td class="px-4 py-2 text-slate-400">Show your public IP details via ipinfo.io</td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">myipconfig</td><td class="px-4 py-2 text-slate-400">Show full IP config JSON via ifconfig.me</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rounded-lg border border-slate-800 bg-slate-900/60 overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-slate-800 text-xs uppercase tracking-wider text-slate-500">Git</div>
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-slate-800">
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gs / gst</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git status</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">ga</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git add</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gaa</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git add --all</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gc</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git commit</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gcm</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git commit -m</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gp / gpl</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git push</code> / <code class="font-mono">git pull</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gl</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git log --oneline --graph --decorate --all</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gd / gds</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git diff</code> / <code class="font-mono">git diff --staged</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gb / gba</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git branch</code> / <code class="font-mono">git branch -a</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gco / gsw</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git checkout</code> / <code class="font-mono">git switch</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gcb</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git switch -c</code></td></tr>
+              <tr><td class="px-4 py-2 font-mono text-emerald-400 whitespace-nowrap">gr / grs</td><td class="px-4 py-2 text-slate-400"><code class="font-mono">git restore</code> / <code class="font-mono">git restore --staged</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements -->
+  <section id="requirements" class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-800/80">
+    <h2 class="text-2xl font-semibold text-slate-50 mb-6">Requirements</h2>
+    <ul class="space-y-2 text-slate-400 text-sm">
+      <li class="flex gap-2"><span class="text-emerald-400">✓</span> Bash 4+ (uses <code class="font-mono">shopt</code> and standard Bash builtins)</li>
+      <li class="flex gap-2"><span class="text-emerald-400">✓</span> Git (for prompt Git status and Git aliases)</li>
+      <li class="flex gap-2"><span class="text-emerald-400">✓</span> <code class="font-mono">bash-completion</code> package (optional, for <code class="font-mono">completion.sh</code>)</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80">
+    <div class="max-w-5xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+      <p>zsh-like-bash — no license specified.</p>
+      <a href="https://github.com/4msar/zsh-like-bash" class="hover:text-emerald-400 transition">github.com/4msar/zsh-like-bash</a>
+    </div>
+  </footer>
+
+</body>
+</html>
