@@ -4,6 +4,10 @@ A small collection of Bash scripts that bring some of the quality-of-life featur
 people love about Zsh — an informative multi-line prompt, a `z`-style directory
 jumper, better history handling, and handy aliases — to plain Bash.
 
+
+**_Suitable where zsh-like tools don’t support or you can't change the default shell._** <br/>
+_example: Cpanel terminal, shared hosting terminal, hostinger, namecheap, godaddy etc._
+
 ## Features
 
 - **`prompt.sh`** — A two-line, color-coded prompt showing:
