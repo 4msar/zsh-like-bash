@@ -29,3 +29,8 @@ alias gsw='git switch'
 alias gcb='git switch -c'
 alias gr='git restore'
 alias grs='git restore --staged'
+
+
+# Get my current ip address details
+alias myip='curl https://ipinfo.io'
+alias myipconfig='curl https://ifconfig.me/all.json | jq'
